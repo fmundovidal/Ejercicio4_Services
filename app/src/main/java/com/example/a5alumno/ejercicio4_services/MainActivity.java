@@ -61,7 +61,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(view.getId()){
             case R.id.btnDispInfo:
                 if(!isBound)
-                    this.dispInfo_TextView.setText(this.edtTextInput.getText().toString());
+                    if(!this.edtTextInput.getText().toString().isEmpty())
+                        this.dispInfo_TextView.setText(this.edtTextInput.getText().toString());
+
+                    else
+                        this.dispInfo_TextView.setText(getString(R.string.txt_view_disclaimer));
                 else
                     this.dispInfo_TextView.setText(Integer.toString(mBoundService.getRandomNumber()));
                 break;
